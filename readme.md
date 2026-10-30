@@ -81,8 +81,8 @@ A pasta `docs/` reúne a documentação técnica das etapas de desenvolvimento:
 
 ## Progresso do desenvolvimento
 
-- [ ] Entendimento e exploração dos dados.
-- [ ] ETL e tratamento dos dados.
+- [X] Entendimento e exploração dos dados.
+- [X] ETL e tratamento dos dados.
 - [ ] Modelagem dos dados.
 - [ ] Desenvolvimento e validação das medidas.
 - [ ] Elaboração do layout no Figma.
