@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "desafio_dataviz"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e8e35516-5f18-4407-85af-289291cbf6ff"
+  }
+}
