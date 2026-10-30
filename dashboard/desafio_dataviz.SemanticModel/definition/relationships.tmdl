@@ -1,0 +1,28 @@
+relationship 45e238b4-c463-412a-9ca9-2ee631e76c65
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dAlunos.data_inicio
+	toColumn: LocalDateTable_db9c1121-84b9-4780-92ba-2712d784b291.Date
+
+relationship a8200a3a-5203-4acd-ae16-de44f87b8002
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fCheckins.data
+	toColumn: LocalDateTable_55893fce-30cf-4539-867b-317679564fb8.Date
+
+relationship 46cf85ac-37cc-4f11-b50c-91393877b4f1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPagamentos.data
+	toColumn: LocalDateTable_f76268c8-aa56-4068-a216-de2ab11eaf21.Date
+
+relationship AutoDetected_fbb8a6c5-aa63-4d81-8973-07ee6086dd28
+	fromColumn: fCheckins.id_aluno
+	toColumn: dAlunos.id_aluno
+
+relationship AutoDetected_7fec52b2-1862-4b8e-8d32-cf609065e90c
+	fromColumn: fPagamentos.id_aluno
+	toColumn: dAlunos.id_aluno
+
+relationship f719b611-d1a0-4083-a915-15c6bec4cebb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Date
+	toColumn: LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc.Date
+

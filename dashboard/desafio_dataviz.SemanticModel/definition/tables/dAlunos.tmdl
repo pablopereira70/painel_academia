@@ -1,0 +1,67 @@
+table dAlunos
+	lineageTag: bd681d64-3d3e-442f-9fba-ae856fe65827
+
+	column id_aluno
+		dataType: int64
+		formatString: 0
+		lineageTag: b41d90de-d5d8-48ab-ad5c-4b4b67fbba40
+		summarizeBy: none
+		sourceColumn: id_aluno
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome
+		dataType: string
+		lineageTag: ebd07859-1307-4e78-906c-5b64396ff04a
+		summarizeBy: none
+		sourceColumn: nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column unidade
+		dataType: string
+		lineageTag: 27305c4c-35d3-4739-8dae-82551c511770
+		summarizeBy: none
+		sourceColumn: unidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column plano
+		dataType: string
+		lineageTag: 9f84313a-df5d-446c-94a2-5b928f3b17d3
+		summarizeBy: none
+		sourceColumn: plano
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_inicio
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 04afa788-9585-4c60-a9c2-1905dd1e73ba
+		summarizeBy: none
+		sourceColumn: data_inicio
+
+		variation Variação
+			isDefault
+			relationship: 45e238b4-c463-412a-9ca9-2ee631e76c65
+			defaultHierarchy: LocalDateTable_db9c1121-84b9-4780-92ba-2712d784b291.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dAlunos = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\pablo\OneDrive\Desktop\painel_academia\dados\base_dados_academia.xlsx"), null, true),
+				    alunos_Sheet = Fonte{[Item="alunos",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(alunos_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"id_aluno", Int64.Type}, {"nome", type text}, {"unidade", type text}, {"plano", type text}, {"data_inicio", type date}})
+				in
+				    #"Tipo Alterado"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Exception
+

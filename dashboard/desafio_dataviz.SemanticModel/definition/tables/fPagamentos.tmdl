@@ -1,0 +1,63 @@
+table fPagamentos
+	lineageTag: 1686225b-abcf-43b8-befc-653dd17a860f
+
+	column id_pagamento
+		dataType: int64
+		formatString: 0
+		lineageTag: 1319bffd-82ec-4bf0-ab6b-9d87a47696db
+		summarizeBy: sum
+		sourceColumn: id_pagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_aluno
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c2c966c-5dd2-441e-a7ab-71442113bcb5
+		summarizeBy: none
+		sourceColumn: id_aluno
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor
+		dataType: double
+		formatString: 0
+		lineageTag: 8d4fe6d6-276c-4e31-a769-c8f98a220d5f
+		summarizeBy: sum
+		sourceColumn: valor
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e29874f2-a2d8-43fe-9525-d78730d8b997
+		summarizeBy: none
+		sourceColumn: data
+
+		variation Variação
+			isDefault
+			relationship: 46cf85ac-37cc-4f11-b50c-91393877b4f1
+			defaultHierarchy: LocalDateTable_f76268c8-aa56-4068-a216-de2ab11eaf21.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fPagamentos = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\pablo\OneDrive\Desktop\painel_academia\dados\base_dados_academia.xlsx"), null, true),
+				    pagamentos_Sheet = Fonte{[Item="pagamentos",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(pagamentos_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"id_pagamento", Int64.Type}, {"id_aluno", Int64.Type}, {"valor", type number}, {"data", type date}})
+				in
+				    #"Tipo Alterado"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

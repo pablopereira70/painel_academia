@@ -11,5 +11,17 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
+annotation PBI_QueryOrder = ["dAlunos","fCheckins","fPagamentos"]
+
+ref table dAlunos
+ref table DateTableTemplate_7ef0133e-ddfe-473d-bc62-bb6822d85061
+ref table LocalDateTable_db9c1121-84b9-4780-92ba-2712d784b291
+ref table fCheckins
+ref table LocalDateTable_55893fce-30cf-4539-867b-317679564fb8
+ref table fPagamentos
+ref table LocalDateTable_f76268c8-aa56-4068-a216-de2ab11eaf21
+ref table dCalendario
+ref table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
+
 ref cultureInfo pt-BR
 

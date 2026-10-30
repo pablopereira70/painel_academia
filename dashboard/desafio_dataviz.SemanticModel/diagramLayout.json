@@ -4,10 +4,59 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 323.36163941535983,
         "y": 0
       },
-      "nodes": [],
+      "nodes": [
+        {
+          "location": {
+            "x": 852.36163941535983,
+            "y": 6.7386990116032166
+          },
+          "nodeIndex": "dCalendario",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.1847511806298,
+            "y": -3.9337499164915926
+          },
+          "nodeIndex": "dAlunos",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.36163941535983,
+            "y": 21.391242715943321
+          },
+          "nodeIndex": "fCheckins",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -10.868640739149768
+          },
+          "nodeIndex": "fPagamentos",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
       "name": "Todas as tabelas",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,

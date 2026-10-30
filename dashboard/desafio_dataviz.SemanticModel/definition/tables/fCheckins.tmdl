@@ -1,0 +1,63 @@
+table fCheckins
+	lineageTag: f4eae3fb-d16d-4e0b-ad19-3f915ce4eb43
+
+	column id_checkin
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d729a40-ca33-4158-983e-5bd1cabf98a9
+		summarizeBy: sum
+		sourceColumn: id_checkin
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_aluno
+		dataType: int64
+		formatString: 0
+		lineageTag: d0549e3a-ed96-41b7-943b-ac489ffe3716
+		summarizeBy: none
+		sourceColumn: id_aluno
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a14e2605-d725-420f-b86a-c250da1ca7e7
+		summarizeBy: none
+		sourceColumn: data
+
+		variation Variação
+			isDefault
+			relationship: a8200a3a-5203-4acd-ae16-de44f87b8002
+			defaultHierarchy: LocalDateTable_55893fce-30cf-4539-867b-317679564fb8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hora
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 7c636b09-7182-49a2-8991-f0c2eba5fd74
+		summarizeBy: none
+		sourceColumn: hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition fCheckins = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\pablo\OneDrive\Desktop\painel_academia\dados\base_dados_academia.xlsx"), null, true),
+				    checkins_Sheet = Fonte{[Item="checkins",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(checkins_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"id_checkin", Int64.Type}, {"id_aluno", Int64.Type}, {"data", type date}, {"hora", type time}})
+				in
+				    #"Tipo Alterado"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Exception
+
