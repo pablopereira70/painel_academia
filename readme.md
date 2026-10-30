@@ -98,6 +98,6 @@ A pasta `docs/` reúne a documentação técnica das etapas de desenvolvimento:
 
 *Imagens e apresentação do dashboard serão adicionadas após a finalização do projeto.*
 
-## Contexto
+---
 
-Desafio proposto pela [EducaDados](https://www.linkedin.com/company/educadadostech/home/) — Módulo 6: DataViz & Storytelling
+Desenvolvido por Pablo Pereira 🧑‍💻
