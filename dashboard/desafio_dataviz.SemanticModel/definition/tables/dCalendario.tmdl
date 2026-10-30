@@ -1,21 +1,22 @@
 table dCalendario
 	lineageTag: 8548ef51-f036-45a0-8b08-5464b6d015b2
 
-	column Date
-		formatString: General Date
+	column data
+		formatString: Long Date
 		lineageTag: a664e609-87ed-4e95-ae22-88eb5a7d551a
 		summarizeBy: none
-		isNameInferred
 		sourceColumn: [Date]
 
 		variation Variação
 			isDefault
-			relationship: f719b611-d1a0-4083-a915-15c6bec4cebb
+			relationship: 0a4d7e25-6923-4347-816c-6faa443a6ab7
 			defaultHierarchy: LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc.'Hierarquia de datas'
 
 		annotation SummarizationSetBy = Automatic
 
-	column Ano
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ano
 		formatString: 0
 		lineageTag: f1142114-f448-4f94-8a11-2bce8970debf
 		summarizeBy: sum
@@ -24,7 +25,7 @@ table dCalendario
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Mes num'
+	column 'mes num'
 		formatString: 0
 		lineageTag: 202a6f27-b978-4471-8ac2-9b8a9c7f395c
 		summarizeBy: sum
@@ -33,16 +34,15 @@ table dCalendario
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Mes abrev'
+	column 'mes abrev'
 		lineageTag: d1d53e66-d3c2-4fd1-83bf-6716936cb9d4
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Mes abrev]
-		sortByColumn: 'Mes num'
 
 		annotation SummarizationSetBy = Automatic
 
-	column Dia
+	column dia
 		formatString: 0
 		lineageTag: b9a8aa9c-1a83-4df2-9ab2-fb1bc1c8bb36
 		summarizeBy: sum
@@ -51,7 +51,7 @@ table dCalendario
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Dia da semana'
+	column 'dia da semana'
 		lineageTag: b9cf2977-37a9-4ff6-98db-fd7cdef0c578
 		summarizeBy: none
 		isNameInferred
@@ -59,7 +59,7 @@ table dCalendario
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Dia da semana num'
+	column 'dia da semana num'
 		formatString: 0
 		lineageTag: 11824a49-80ef-43c2-8213-6a323874f805
 		summarizeBy: sum
@@ -75,12 +75,12 @@ table dCalendario
 				var dataMin = if(min(fCheckins[data]) < min(fPagamentos[data]), min(fCheckins[data]), min(fPagamentos[data]))
 				var dataMax = if(max(fCheckins[data]) > max(fPagamentos[data]), max(fCheckins[data]), max(fPagamentos[data]))
 				return ADDCOLUMNS(CALENDAR(dataMin, dataMax),
-				"Ano", year([Date]),
-				"Mes num", MONTH([Date]),
-				"Mes abrev", format([Date], "MMM"),
-				"Dia", day([Date]),
-				"Dia da semana", format([Date], "ddd"),
-				"Dia da semana num", SWITCH(true,
+				"ano", year([Date]),
+				"mes num", MONTH([Date]),
+				"mes abrev", format([Date], "MMM"),
+				"dia", day([Date]),
+				"dia da semana", format([Date], "ddd"),
+				"dia da semana num", SWITCH(true,
 				format([Date], "ddd")= "seg", 1,
 				format([Date], "ddd") = "ter", 2,
 				format([Date], "ddd") = "qua", 3,

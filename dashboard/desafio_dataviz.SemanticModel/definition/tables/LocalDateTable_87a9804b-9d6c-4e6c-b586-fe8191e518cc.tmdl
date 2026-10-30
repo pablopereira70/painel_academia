@@ -7,7 +7,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 		dataType: dateTime
 		isHidden
 		formatString: General Date
-		lineageTag: 552f9c8c-57fd-4e56-b48e-58e523453818
+		lineageTag: 80a0100d-6ff5-4147-a979-e4845d9334ce
 		dataCategory: PaddedDateTableDates
 		summarizeBy: none
 		isNameInferred
@@ -19,7 +19,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 8d043ab9-eb8a-45b5-9894-72089cecd411
+		lineageTag: 33e8c94e-1aaf-4e1f-b033-2f61997106a3
 		dataCategory: Years
 		summarizeBy: none
 
@@ -31,7 +31,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 6a8b784b-1743-409b-a238-834d4f803fea
+		lineageTag: 530927a4-1b5e-463e-92bc-a73a1ca1b1d0
 		dataCategory: MonthOfYear
 		summarizeBy: none
 
@@ -42,7 +42,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 	column Mês = FORMAT([Date], "MMMM")
 		dataType: string
 		isHidden
-		lineageTag: 03c725c9-82cd-446f-9f47-e7ec6c3a9743
+		lineageTag: 165257d5-80a8-49c9-814d-84a0ad8d342c
 		dataCategory: Months
 		summarizeBy: none
 		sortByColumn: MonthNo
@@ -55,7 +55,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 1462e8f0-508f-4af2-9338-31d5ea72c8dc
+		lineageTag: 505b7371-2b25-4b7e-ba83-d137406bea77
 		dataCategory: QuarterOfYear
 		summarizeBy: none
 
@@ -66,7 +66,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 	column Trimestre = "Qtr " & [QuarterNo]
 		dataType: string
 		isHidden
-		lineageTag: 312d8a24-9306-46f3-8e0c-9a4e2b1c9827
+		lineageTag: 2aa50b7e-5092-41fd-bc7d-cb8bcf119fb8
 		dataCategory: Quarters
 		summarizeBy: none
 		sortByColumn: QuarterNo
@@ -79,7 +79,7 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 9badbae4-b68b-4550-a355-d71b8af2325f
+		lineageTag: 8b7c3eb7-dbd3-4bda-9553-d056e83bc990
 		dataCategory: DayOfMonth
 		summarizeBy: none
 
@@ -88,29 +88,29 @@ table LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc
 		annotation TemplateId = Day
 
 	hierarchy 'Hierarquia de datas'
-		lineageTag: 3013ad2d-df07-4f86-ba55-8d47e381f9a8
+		lineageTag: b35439de-30b6-4866-ac02-6e8f62a81125
 
 		level Ano
-			lineageTag: 5bbb01f2-dbdd-4313-b05b-a661d047b893
+			lineageTag: 05db6c0d-aaa6-4cbc-bd10-1e820e8b4acb
 			column: Ano
 
 		level Trimestre
-			lineageTag: 5aed311f-9073-4559-b979-a30cdd5b4bb4
+			lineageTag: a0775a48-45c0-437c-a4b9-34ed612d108a
 			column: Trimestre
 
 		level Mês
-			lineageTag: c1b96adb-34d4-4a44-8364-889a3df02e09
+			lineageTag: 849ff5e7-e16a-4539-8704-bd356a4e09b1
 			column: Mês
 
 		level Dia
-			lineageTag: ab7c8f54-50da-43e5-a249-bfbffaf1c22f
+			lineageTag: 99f1b4b1-1c69-429c-a798-3da8b9990677
 			column: Dia
 
 		annotation TemplateId = DateHierarchy
 
 	partition LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc = calculated
 		mode: import
-		source = Calendar(Date(Year(MIN('dCalendario'[Date])), 1, 1), Date(Year(MAX('dCalendario'[Date])), 12, 31))
+		source = Calendar(Date(Year(MIN('dCalendario'[data])), 1, 1), Date(Year(MAX('dCalendario'[data])), 12, 31))
 
 	annotation __PBI_LocalDateTable = true
 

@@ -21,8 +21,8 @@ relationship AutoDetected_7fec52b2-1862-4b8e-8d32-cf609065e90c
 	fromColumn: fPagamentos.id_aluno
 	toColumn: dAlunos.id_aluno
 
-relationship f719b611-d1a0-4083-a915-15c6bec4cebb
+relationship 0a4d7e25-6923-4347-816c-6faa443a6ab7
 	joinOnDateBehavior: datePartOnly
-	fromColumn: dCalendario.Date
+	fromColumn: dCalendario.data
 	toColumn: LocalDateTable_87a9804b-9d6c-4e6c-b586-fe8191e518cc.Date
 
